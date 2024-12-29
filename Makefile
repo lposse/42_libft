@@ -11,7 +11,7 @@ OBJS=$(SRCS:$(SOURCE_DIR)/%.c=$(OBJ_DIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $(NAME)
+	ar rcs $(NAME) $(OBJS)
 
 $(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.c
 	mkdir -p $(OBJ_DIR)
