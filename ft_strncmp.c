@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lposse <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/29 20:32:42 by lposse            #+#    #+#             */
-/*   Updated: 2024/12/30 18:22:44 by lposse           ###   ########.fr       */
+/*   Created: 2025/01/01 19:47:19 by lposse            #+#    #+#             */
+/*   Updated: 2025/01/01 20:38:46 by lposse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-void	*ft_memset(void *s, int c, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*ptr;
-	unsigned char	value;
+	unsigned char	*ptrs1;
+	unsigned char	*ptrs2;
+	size_t			i;
 
-	ptr = (unsigned char *)s;
-	value = (unsigned char)c;
-	while (n--)
+	ptrs1 = (unsigned char *)s1;
+	ptrs2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n - 1)
 	{
-		*ptr = value;
-		ptr++;
+		if (ptrs1[i] != ptrs2[i])
+			return ((int)(ptrs1[i] - ptrs2[i]));
+		if (ptrs1[i] == '\0' || ptrs2[i] == '\0')
+			break ;
+		i++;
 	}
-	return (s);
+	return ((int)(ptrs1[i] - ptrs2[i]));
 }
